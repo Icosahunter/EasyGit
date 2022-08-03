@@ -2,6 +2,7 @@
 Simplified Git GUI for beginners.
 EasyGit gives you easy access to the very the basics required to
 use a git repository.
+![Screenshot of GUI](gui_screenshot.png)
 
 # Features
  - Sync: Commit, push, and pull
