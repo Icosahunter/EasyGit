@@ -38,11 +38,21 @@ window = sg.Window('EasyGit', layout, finalize=True)
 
 
 # =============== Functions ===================
+def parse_out_spaces(command):
+    split_com = command.split('"')
+    result = []
+    for i in range(len(split_com)):
+        if i%2 == 0:
+            result.extend(split_com[i].split(' '))
+        else:
+            result.append(split_com[i])
+    return result
+
 def cmd(command, disp_cmd=True, disp_output=True, hb=False):
     global config
     if disp_cmd:
         print(command)
-    result = subprocess.run(command, cwd=config['repository'], capture_output=True)
+    result = subprocess.run(parse_out_spaces(command), cwd=config['repository'], capture_output=True)
     if disp_output:
         for line in result.stdout.decode('utf8').split('\n'):
             if hb:
